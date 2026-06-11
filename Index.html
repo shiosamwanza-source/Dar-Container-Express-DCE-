@@ -1,29 +1,44 @@
-<div class="dce-container">
-  <h2>Dar Container Express</h2>
-  <form id="dceRequestForm">
-    <label>Mzigo Upo Wapi? (ICD/Bandari)</label>
-    <select id="origin">
-      <option value="TICTS">TICTS</option>
-      <option value="AMI">AMI ICD</option>
-      <option value="PMM">PMM ICD</option>
-    </select>
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dar Container Express | DCE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dce-container">
+        <h1>Dar Container Express</h1>
+        <p>Omba lori la kontena sasa hivi</p>
+        
+        <form id="dceRequestForm">
+            <label>Mzigo Upo Wapi?</label>
+            <select id="origin">
+                <option value="TICTS">TICTS</option>
+                <option value="AMI">AMI ICD</option>
+                <option value="PMM">PMM ICD</option>
+            </select>
 
-    <label>Ukubwa & Uzito</label>
-    <select id="weightClass">
-      <option value="40ft">Futi 40</option>
-      <option value="20ft_light">Futi 20 (Uzito Mdogo)</option>
-      <option value="20ft_heavy">Futi 20 (Uzito Mkubwa)</option>
-    </select>
+            <label>Ukubwa & Uzito</label>
+            <select id="weightClass">
+                <option value="40ft">Futi 40</option>
+                <option value="20ft_light">Futi 20 (Uzito Mdogo)</option>
+                <option value="20ft_heavy">Futi 20 (Uzito Mkubwa)</option>
+            </select>
 
-    <label>Linaenda Wapi?</label>
-    <input type="text" id="destination" placeholder="Mfano: Kibaha">
+            <label>Linaenda Wapi?</label>
+            <input type="text" id="destination" placeholder="Mfano: Kibaha" required>
 
-    <label>Empty Yadi ya Meli</label>
-    <select id="shippingLine">
-      <option value="MSC">MSC Yadi</option>
-      <option value="Maersk">Maersk Yadi</option>
-    </select>
+            <label>Yadi ya Empty (Shipping Line)</label>
+            <select id="shippingLine">
+                <option value="MSC">MSC Yadi</option>
+                <option value="Maersk">Maersk Yadi</option>
+                <option value="PIL">PIL Yadi</option>
+            </select>
 
-    <button type="button" onclick="submitRequest()">TUMA MAOMBI</button>
-  </form>
-</div>
+            <button type="button" onclick="submitRequest()">TUMA MAOMBI</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
