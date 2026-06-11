@@ -12,28 +12,38 @@
         <p>Omba lori la kontena sasa hivi</p>
         
         <form id="dceRequestForm">
-            <label>Mzigo Upo Wapi?</label>
+            <label>Mzigo Upo Wapi? (Bandari/ICD)</label>
             <select id="origin">
-                <option value="TICTS">TICTS</option>
-                <option value="AMI">AMI ICD</option>
-                <option value="PMM">PMM ICD</option>
+                <option value="DP_WORLD">DP WORLD (Bandari Kuu)</option>
+                <option value="TPA">TPA (Mamlaka ya Bandari)</option>
+                <option value="JEFAG">Jefag ICD</option>
+                <option value="AFRICAN">African ICD</option>
+                <option value="TRH">TRH ICD</option>
+                <option value="AZAM">Azam ICD</option>
+                <option value="DSM_ICD">Dar es Salaam ICD</option>
+                <option value="PMM_ESTATE">PMM Estate ICD</option>
+                <option value="GALCO">Galco ICD</option>
+                <option value="BRAVO">Bravo Group ICD</option>
+                <option value="CORRIDOR">Corridor Group ICD</option>
+                <option value="STEINWEG">Steinweg ICD</option>
             </select>
 
-            <label>Ukubwa & Uzito</label>
+            <label>Ukubwa & Uzito wa Kontena</label>
             <select id="weightClass">
-                <option value="40ft">Futi 40</option>
-                <option value="20ft_light">Futi 20 (Uzito Mdogo)</option>
-                <option value="20ft_heavy">Futi 20 (Uzito Mkubwa)</option>
+                <option value="40ft">Futi 40 (40ft Container)</option>
+                <option value="20ft_light">Futi 20 - Mwepesi (Light)</option>
+                <option value="20ft_heavy">Futi 20 - Mzito (Heavy)</option>
             </select>
 
-            <label>Linaenda Wapi?</label>
-            <input type="text" id="destination" placeholder="Mfano: Kibaha" required>
+            <label>Linaenda Wapi? (Destination)</label>
+            <input type="text" id="destination" placeholder="Mfano: Kibaha, Mbagala, Vingunguti" required>
 
             <label>Yadi ya Empty (Shipping Line)</label>
             <select id="shippingLine">
                 <option value="MSC">MSC Yadi</option>
-                <option value="Maersk">Maersk Yadi</option>
+                <option value="MAERSK">Maersk Yadi</option>
                 <option value="PIL">PIL Yadi</option>
+                <option value="CMA">CMA CGM Yadi</option>
             </select>
 
             <button type="button" onclick="submitRequest()">TUMA MAOMBI</button>
