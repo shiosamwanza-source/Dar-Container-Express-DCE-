@@ -238,5 +238,26 @@ function emptyCheck(val){
 
 </script>
 
+  // DRIVER LICENSE VALIDATION (SOFT CHECK)
+function checkLicenseStatus() {
+  const license = document.getElementById("licenseInput")?.value;
+  const status = document.getElementById("licenseStatus");
+
+  if(!license){
+    status.innerHTML = "";
+    return;
+  }
+
+  // Soft validation (NOT blocking system)
+  const pattern = /^[A-Z]{2}-\d{6,10}$/;
+
+  if(pattern.test(license)){
+    status.innerHTML = "✔ License format valid (Active Risk: LOW)";
+    status.style.color = "green";
+  } else {
+    status.innerHTML = "⚠ License format unusual (Flagged Risk: HIGH)";
+    status.style.color = "orange";
+  }
+}
 </body>
 </html>
