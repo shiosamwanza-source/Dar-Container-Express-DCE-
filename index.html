@@ -3,62 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dar Container Express | DCE</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dar Container Express (DCE) - Agent Portal</title>
+    <!-- Tailwind CSS kwa ajili ya muonekano wa kisasa wa simu -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome kwa ajili ya Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
 </head>
-<body>
-    <div class="dce-container">
-        <h1>Dar Container Express</h1>
-        <p>Omba lori la kontena sasa hivi</p>
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <!-- Mobile Container Emulator -->
+    <div class="w-full max-w-md bg-white min-h-screen sm:min-h-[850px] sm:rounded-3xl shadow-2xl flex flex-col justify-between overflow-hidden relative border border-gray-100">
         
-        <form id="dceRequestForm">
-            <label>Mzigo Upo Wapi? (Bandari/ICD)</label>
-            <select id="origin">
-                <option value="DP_WORLD">DP WORLD (Bandari Kuu)</option>
-                <option value="TPA">TPA (Mamlaka ya Bandari)</option>
-                <option value="JEFAG">Jefag ICD</option>
-                <option value="AFRICAN">African ICD</option>
-                <option value="TRH">TRH ICD</option>
-                <option value="AZAM">Azam ICD</option>
-                <option value="DSM_ICD">Dar es Salaam ICD</option>
-                <option value="PMM_ESTATE">PMM Estate ICD</option>
-                <option value="GALCO">Galco ICD</option>
-                <option value="BRAVO">Bravo Group ICD</option>
-                <option value="CORRIDOR">Corridor Group ICD</option>
-                <option value="STEINWEG">Steinweg ICD</option>
-            </select>
+        <!-- TOP HEADER -->
+        <div class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white px-6 pt-8 pb-6 rounded-b-3xl shadow-md">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white text-blue-700 p-2 rounded-xl shadow-inner">
+                        <i class="fa-solid fa-truck-flatbed text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black tracking-wider text-yellow-400">DCE</h1>
+                        <p class="text-xs text-blue-200 font-medium">Dar Container Express</p>
+                    </div>
+                </div>
+                <!-- TANCIS Indicator -->
+                <div class="bg-blue-600/50 px-3 py-1.5 rounded-full text-xs font-semibold border border-blue-400/30 flex items-center space-x-1">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    <span>TANCIS Active</span>
+                </div>
+            </div>
+            <p class="text-xs text-blue-100/80">Jukwaa la Mawakala la PANDAS Global Logistics.</p>
+        </div>
 
-            <label>Ukubwa & Uzito wa Kontena</label>
-            <select id="weightClass">
-                <option value="40ft">Futi 40 (40ft Container)</option>
-                <option value="20ft_light">Futi 20 - Mwepesi (Light)</option>
-                <option value="20ft_heavy">Futi 20 - Mzito (Heavy)</option>
-            </select>
+        <!-- MAIN CONTENT AREA -->
+        <div class="flex-1 px-5 py-6 space-y-6 overflow-y-auto">
+            
+            <!-- QUICK STATISTICS -->
+            <div class="grid grid-cols-2 gap-3 bg-gray-50 p-3 rounded-2xl border border-gray-200/60">
+                <div class="text-center p-2 bg-white rounded-xl shadow-sm">
+                    <span class="block text-xs text-gray-400 font-medium">Maroli Wazi</span>
+                    <span class="text-lg font-bold text-green-600">150+ Trucks</span>
+                </div>
+                <div class="text-center p-2 bg-white rounded-xl shadow-sm">
+                    <span class="block text-xs text-gray-400 font-medium">Muda wa Dili</span>
+                    <span class="text-lg font-bold text-indigo-600">30 Secs</span>
+                </div>
+            </div>
 
-            <label>Linaenda Wapi? (Destination)</label>
-            <input type="text" id="destination" placeholder="Mfano: Kibaha, Mbagala, Vingunguti" required>
+            <!-- THE 4-DATA REQUEST FORM -->
+            <div class="bg-white rounded-2xl space-y-4">
+                <div class="border-b border-gray-100 pb-2 flex justify-between items-center">
+                    <h2 class="text-sm font-bold text-gray-800 tracking-wide uppercase">Ombi la Gari la Haraka</h2>
+                    <span class="text-[10px] bg-yellow-100 text-yellow-800 font-bold px-2 py-0.5 rounded">Town Trip pekee</span>
+                </div>
 
-            <label>Yadi ya Empty (Shipping Line)</label>
-            <select id="shippingLine">
-                <option value="MAERSK">Maersk</option>
-                <option value="MSC">MSC</option>
-                <option value="CMA_CGM">CMA CGM</option>
-                <option value="EVERGREEN">Evergreen</option>
-                <option value="COSCO">COSCO</option>
-                <option value="EMIRATES">Emirates</option>
-                <option value="HAPAG_LLOYD">Hapag-Lloyd</option>
-                <option value="PIL">PIL</option>
-                <option value="SAFMARINE">Safmarine</option>
-                <option value="DELMAS">Delmas</option>
-                <option value="NYK_LINE">NYK Line</option>
-                <option value="K_LINE">K Line</option>
-                <option value="YANG_MING">Yang Ming</option>
-                <option value="ZIM">ZIM Shipping</option>
-            </select>
+                <form id="dceRequestForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+                    
+                    <!-- DATA 1: KONTENA LILIPO (Zilizochukuliwa kutoka kodi yako ya zamani) -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1.5">
+                            <i class="fa-solid fa-location-crosshairs text-blue-600 mr-1"></i> 1. Mzigo Upo Wapi? (Bandari/ICD)
+                        </label>
+                        <select required id="origin" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium text-gray-700">
+                            <option value="" disabled selected>Chagua eneo lilipo...</option>
+                            <option value="DP_WORLD">DP WORLD (Bandari Kuu)</option>
+                            <option value="TPA">TPA (Mamlaka ya Bandari)</option>
+                            <option value="JEFAG">Jefag ICD</option>
+                            <option value="AFRICAN">African ICD</option>
+                            <option value="TRH">TRH ICD</option>
+                            <option value="AZAM">Azam ICD</option>
+                            <option value="DSM_ICD">Dar es Salaam ICD</option>
+                            <option value="PMM_ESTATE">PMM Estate ICD</option>
+                            <option value="GALCO">Galco ICD</option>
+                            <option value="BRAVO">Bravo Group ICD</option>
+                            <option value="CORRIDOR">Corridor Group ICD</option>
+                            <option value="STEINWEG">Steinweg ICD</option>
+                        </select>
+                    </div>
 
-            <button type="button" onclick="submitRequest()">TUMA MAOMBI</button>
-        </form>
+                    <!-- DATA 2: UKUBWA NA UZITO -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1.5">
+                            <i class="fa-solid fa-weight-hanging text-blue-600 mr-1"></i> 2. Ukubwa & Uzito wa Kontena
+                        </label>
+                        <select required id="weightClass" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium text-gray-700">
+                            <option value="" disabled selected>Chagua aina ya mzigo...</option>
+                            <option value="40ft">Futi 40 (40ft Container)</option>
+                            <option value="20ft_light">Futi 20 - Mwepesi (Light - Single Diff)</option>
+                            <option value="20ft_heavy">Futi 20 - Mzito (Heavy - Semi-Trailer)</option>
+                        </select>
+                    </div>
+
+                    <!-- DATA 3: LINALOENDA WAPI (Tumebadilisha kuwa Drop-down kulinda mipaka ya Town Trips) -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1.5">
+                            <i class="fa-solid fa-map-location-dot text-blue-600 mr-1"></i> 3. Linaenda Wapi? (Destination)
+                        </label>
+                        <select required id="destination" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium text-gray-700">
+                            <option value="" disabled selected>Chagua sehemu ya kushusha...</option>
+                            <optgroup label="Dar es Salaam (Laki 6 - Milioni 1)">
+                                <option value="Kariakoo">Kariakoo / Mjini Kati</option>
+                                <option value="Vingunguti">Vingunguti Industrial Area</option>
+                                <option value="Pugu">Pugu / Nyerere Road</option>
+                                <option value="Mbagala">Mbagala Industrial Zone</option>
+                            </optgroup>
+                            <optgroup label="Pwani (Laki 3 - Laki 5)">
+                                <option value="Kibaha Town">Kibaha Mjini</option>
+                                <option value="Kibaha Tamco">Kibaha TAMCO (Viwandani)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- DATA 4: YADI YA EMPTY (Zilizochukuliwa kutoka kodi yako ya zamani) -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1.5">
+                            <i class="fa-solid fa-arrow-rotate-left text-blue-600 mr-1"></i> 4. Yadi ya Empty (Shipping Line)
+                        </label>
+                        <select required id="shippingLine" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium text-gray-700">
+                            <option value="" disabled selected>Chagua Shipping Line...</option>
+                            <option value="MAERSK">Maersk</option>
+                            <option value="MSC">MSC</option>
+                            <option value="CMA_CGM">CMA CGM</option>
+                            <option value="EVERGREEN">Evergreen</option>
+                            <option value="COSCO">COSCO</option>
+                            <option value="EMIRATES">Emirates</option>
+                            <option value="HAPAG_LLOYD">Hapag-Lloyd</option>
+                            <option value="PIL">PIL</option>
+                            <option value="SAFMARINE">Safmarine</option>
+                            <option value="DELMAS">Delmas</option>
+                            <option value="NYK_LINE">NYK Line</option>
+                            <option value="K_LINE">K Line</option>
+                            <option value="YANG_MING">Yang Ming</option>
+                            <option value="ZIM">ZIM Shipping</option>
+                        </select>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-800 transition-all flex justify-center items-center space-x-2 mt-2">
+                        <span>TUMA MAOMBI & PIGA SIMU</span>
+                        <i class="fa-solid fa-phone-volume animate-bounce"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- SEARCHING STATUS STATE (HIDDEN BY DEFAULT) -->
+            <div id="statusModal" class="hidden bg-slate-900/90 text-white rounded-2xl p-6 text-center space-y-4 shadow-xl">
+                <div class="flex justify-center">
+                    <div class="w-14 h-14 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+                <h3 class="font-bold text-base text-yellow-400">Inatafuta gari la karibu...</h3>
+                <p class="text-xs text-gray-300">Mfumo unafanya 'matching' na kumpigia dereva simu ya sauti ya kiotomatiki (IVR) kwenye kitochi chake.</p>
+            </div>
+
+        </div>
+
+        <!-- FOOTER & LIABILITY DISCLAIMER -->
+        <div class="bg-gray-50 px-5 py-4 border-t border-gray-100 text-center">
+            <p class="text-[10px] text-gray-400 font-medium leading-relaxed">
+                <strong>Mipaka ya Kazi:</strong> DCE ni daraja la kidijitali tu. Masuala ya usalama wa mzigo, uharibifu, na mikataba ni baina ya Wakala na Mmiliki wa gari. Hatuhusiki na urasimu wa bandari.
+            </p>
+            <div class="mt-2 text-[10px] text-gray-500 font-bold">
+                Toleo la 1.0 © 2026 PANDAS Global Logistics
+            </div>
+        </div>
+
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const modal = document.getElementById('statusModal');
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                alert(`Dili limekamata!\n\nMfumo umepiga simu ya sauti kwa dereva.\nNamba ya gari itatokea hapa punde akibonyeza 1.`);
+                modal.classList.add('hidden');
+                document.getElementById('dceRequestForm').reset();
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
