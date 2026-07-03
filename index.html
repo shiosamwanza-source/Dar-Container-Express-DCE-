@@ -13,7 +13,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f3f4f6;
         }
-        /* Kuficha scrollbar isisumbue kwenye preview */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -41,7 +40,7 @@
                 </div>
             </div>
             
-            <!-- TABS CONTROLLER (Kubadilisha kati ya Wakala na Mmiliki wa Gari) -->
+            <!-- TABS CONTROLLER -->
             <div class="flex bg-blue-900/40 p-1 rounded-xl mt-4 border border-blue-500/20">
                 <button onclick="switchTab('agent-tab')" id="btn-agent-tab" class="w-1/2 py-2 text-xs font-bold rounded-lg bg-white text-blue-800 transition-all shadow-sm">
                     <i class="fa-solid fa-user-tie mr-1"></i> Wakala wa Bandari
@@ -66,8 +65,9 @@
                     <!-- Taarifa Binafsi za Wakala -->
                     <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 space-y-2.5">
                         <span class="text-[11px] font-bold text-blue-700 tracking-wider uppercase block">Taarifa za Wakala</span>
-                        <div>
-                            <input type="text" required placeholder="Jina Lako Kamili" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" required placeholder="Jina la Wakala" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="tel" required placeholder="Namba ya Simu ya Wakala" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <input type="text" required placeholder="Clearing Agency Name" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -86,7 +86,7 @@
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-500 mb-1">Aina ya Kontena</label>
                                 <select required class="w-full px-2 py-2 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="40ft">Futi 40 (40ft)</option>
+                                    <option value="40ft">Futi 40 (40ft Container)</option>
                                     <option value="20ft_light">Futi 20 - Mwepesi (Light)</option>
                                     <option value="20ft_heavy">Futi 20 - Mzito (Heavy)</option>
                                 </select>
@@ -94,35 +94,60 @@
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-500 mb-1">Shipping Line</label>
                                 <select required class="w-full px-2 py-2 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="MAERSK">Maersk</option> <option value="MSC">MSC</option>
-                                    <option value="CMA_CGM">CMA CGM</option> <option value="EVERGREEN">Evergreen</option>
-                                    <option value="COSCO">COSCO</option> <option value="PIL">PIL</option>
+                                    <option value="MAERSK">Maersk</option>
+                                    <option value="MSC">MSC (Mediterranean Shipping Co.)</option>
+                                    <option value="CMA_CGM">CMA CGM</option>
+                                    <option value="EVERGREEN">Evergreen Line</option>
+                                    <option value="COSCO">COSCO Shipping</option>
+                                    <option value="EMIRATES">Emirates Shipping Line</option>
                                     <option value="HAPAG_LLOYD">Hapag-Lloyd</option>
+                                    <option value="PIL">PIL (Pacific International Lines)</option>
+                                    <option value="SAFMARINE">Safmarine</option>
+                                    <option value="DELMAS">Delmas</option>
+                                    <option value="NYK_LINE">NYK Line</option>
+                                    <option value="K_LINE">K Line</option>
+                                    <option value="YANG_MING">Yang Ming Line</option>
+                                    <option value="ZIM">ZIM Shipping</option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Ruti na Safari -->
+                    <!-- Ruti na Safari (Orodha Kamili ya ICDs 15 ulizoweka) -->
                     <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 space-y-2.5">
                         <span class="text-[11px] font-bold text-blue-700 tracking-wider uppercase block">Ruti ya Safari</span>
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-500 mb-1">Inapoanzia (ICD / TPA / DP World Name)</label>
+                            <label class="block text-[10px] font-bold text-gray-500 mb-1">Inapoanzia (Starting point ICD/TPA/DP World Name)</label>
                             <select required class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="" disabled selected>Chagua eneo la kuanzia mzigo...</option>
                                 <option value="DP_WORLD">DP WORLD (Bandari Kuu)</option>
                                 <option value="TPA">TPA (Mamlaka ya Bandari)</option>
-                                <option value="JEFAG">Jefag ICD</option> <option value="AFRICAN">African ICD</option>
-                                <option value="TRH">TRH ICD</option> <option value="AZAM">Azam ICD</option>
-                                <option value="PMM_ESTATE">PMM Estate ICD</option> <option value="GALCO">Galco ICD</option>
+                                <option value="JEFAG">Jefag ICD – Kurasini</option>
+                                <option value="AFRICAN">African ICD – DSM</option>
+                                <option value="DSM_ICD">Dar es Salaam ICD (DICD) – Temeke</option>
+                                <option value="TRH">TRH ICD – Nelson Mandela Expressway</option>
+                                <option value="AZAM">Azam ICD – Temeke (Chang’ombe)</option>
+                                <option value="PMM_ESTATE">PMM Estate ICD – Vingunguti</option>
+                                <option value="GALCO">Galco ICD – Kurasini</option>
+                                <option value="BRAVO">Bravo Group ICD – Ubungo (Mabibo)</option>
+                                <option value="CORRIDOR">Corridor Group ICD – Kurasini</option>
+                                <option value="STEINWEG">Steinweg ICD – DSM (Kimataifa)</option>
+                                <option value="AMI">AMI ICD – Tabata</option>
+                                <option value="AL_HUSHOOM">Al-Hushoom ICD – Kurasini</option>
+                                <option value="WHARF_UBUNGO">Wharf Ubungo ICD – Ubungo</option>
+                                <option value="MAJAHAZI">Majahazi ICD – DSM</option>
+                                <option value="FANTOOS">Fantoos ICD – (Maalum kwa Empty)</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-[10px] font-bold text-gray-500 mb-1">Inapoenda (Destination)</label>
                             <select required class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="" disabled selected>Chagua eneo la kushusha mzigo...</option>
                                 <optgroup label="Dar es Salaam (Laki 6 - Milioni 1)">
                                     <option value="Kariakoo">Kariakoo / Mjini Kati</option>
                                     <option value="Vingunguti">Vingunguti Industrial Area</option>
                                     <option value="Pugu">Pugu / Nyerere Road</option>
+                                    <option value="Mbagala">Mbagala Industrial Zone</option>
                                 </optgroup>
                                 <optgroup label="Pwani (Laki 3 - Laki 5)">
                                     <option value="Kibaha Town">Kibaha Mjini</option>
@@ -138,7 +163,7 @@
                 </form>
             </div>
 
-            <!-- SECTION 2: JUKWAA LA WAMILIKI WA MAGARI (HIDDEN BY DEFAULT) -->
+            <!-- SECTION 2: JUKWAA LA WAMILIKI WA MAGARI -->
             <div id="owner-tab-content" class="hidden space-y-4">
                 <div class="border-b border-gray-100 pb-2 flex justify-between items-center">
                     <h2 class="text-xs font-bold text-gray-800 tracking-wide uppercase">Usajili wa Gari na Dereva</h2>
@@ -147,6 +172,15 @@
 
                 <form id="ownerForm" class="space-y-3" onsubmit="handleOwnerSubmit(event)">
                     
+                    <!-- Taarifa za Mmiliki (Mabosi) -->
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 space-y-2.5">
+                        <span class="text-[11px] font-bold text-indigo-700 tracking-wider uppercase block">Taarifa za Mmiliki (Bosi)</span>
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" required placeholder="Jina la Mmiliki" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <input type="tel" required placeholder="Namba ya Simu ya Bosi" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                    </div>
+
                     <!-- Taarifa za Gari -->
                     <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 space-y-2.5">
                         <span class="text-[11px] font-bold text-indigo-700 tracking-wider uppercase block">Taarifa za Lori / Chombo</span>
@@ -165,9 +199,15 @@
                     <!-- Taarifa za Dereva -->
                     <div class="bg-gray-50 p-3 rounded-xl border border-gray-200/60 space-y-2.5">
                         <span class="text-[11px] font-bold text-indigo-700 tracking-wider uppercase block">Taarifa za Dereva</span>
-                        <div>
-                            <label class="block text-[10px] font-bold text-gray-500 mb-1">Jina Kamili la Dereva</label>
-                            <input type="text" required placeholder="Mfamno: John Juma" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[10px] font-bold text-gray-500 mb-1">Jina la Dereva</label>
+                                <input type="text" required placeholder="Mfano: John Juma" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-gray-500 mb-1">Namba ya Simu (Dereva)</label>
+                                <input type="tel" required placeholder="Namba ya Dereva" class="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
                         </div>
                         <div>
                             <label class="block text-[10px] font-bold text-gray-500 mb-1">Nambari ya Leseni ya Udereva</label>
@@ -181,7 +221,7 @@
                 </form>
             </div>
 
-            <!-- STATUS STATE (HIDDEN BY DEFAULT) -->
+            <!-- STATUS STATE -->
             <div id="statusModal" class="hidden bg-slate-900/95 text-white rounded-2xl p-5 text-center space-y-3 shadow-xl">
                 <div class="flex justify-center">
                     <div class="w-10 h-10 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
@@ -195,7 +235,7 @@
         <!-- FOOTER & DISCLAIMER -->
         <div class="bg-gray-50 px-5 py-3.5 border-t border-gray-100 text-center">
             <p class="text-[9px] text-gray-400 leading-relaxed">
-                DCE ni daraja la kidijitali tu la PANDAS Global Logistics[span_0](start_span)[span_0](end_span). Masuala ya usalama wa mzigo au mikataba ni baina ya Wakala na Mmiliki wa gari[span_1](start_span)[span_1](end_span).
+                DCE ni daraja la kidijitali tu la PANDAS Global Logistics[span_1](start_span)[span_1](end_span). Masuala ya usamani wa mzigo au kikataba ni baina ya Wakala na Mmiliki wa gari[span_2](start_span)[span_2](end_span).
             </p>
             <div class="mt-1.5 text-[9px] text-gray-500 font-bold">
                 Toleo la 1.0 © 2026
@@ -203,7 +243,7 @@
         </div>
     </div>
 
-    <!-- SIMPLE JAVASCRIPT CONTROLLER -->
+    <!-- JAVASCRIPT CONTROLLER -->
     <script>
         function switchTab(tabName) {
             const agentContent = document.getElementById('agent-tab-content');
@@ -228,7 +268,7 @@
             event.preventDefault();
             showStatus("Inatafuta gari la karibu...", "Mifumo ya IVR inapiga simu ya sauti kwa dereva wa kitochi sasa hivi...");
             setTimeout(() => {
-                alert("Dili limekamata! Dereva amepigiwa simu.");
+                alert("Dili limekamata! Mfumo umeanza kupiga simu kwa dereva sahihi.");
                 hideStatus();
                 document.getElementById('agentForm').reset();
             }, 3000);
@@ -236,9 +276,9 @@
 
         function handleOwnerSubmit(event) {
             event.preventDefault();
-            showStatus("Inahifadhi taarifa...", "Lori lako linaingizwa kwenye mtandao wetu wa magari 150...");
+            showStatus("Inahifadhi taarifa...", "Lori na namba za simu zinaingizwa kwenye mtandao wa maroli 150...");
             setTimeout(() => {
-                alert("Lori na Dereva wamesajiliwa kikamilifu kwenye mfumo wa DCE!");
+                alert("Usajili Umekamilika! Mmiliki na Dereva wameunganishwa kwenye kanzidata ya DCE.");
                 hideStatus();
                 document.getElementById('ownerForm').reset();
             }, 2500);
