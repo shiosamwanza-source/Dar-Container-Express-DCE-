@@ -43,7 +43,7 @@
     <!-- ================= AGENT ================= -->
     <div id="agentView" class="space-y-3">
 
-      <h2 class="font-bold text-sm">Clearing Agent</h2>
+      <h2 class="font-bold text-sm">Clearing Agent Portal</h2>
 
       <!-- AGENT INFO -->
       <div class="bg-gray-100 p-3 rounded space-y-2">
@@ -71,33 +71,6 @@
         <div id="zoneMsg" class="text-[11px] text-gray-600"></div>
       </div>
 
-      <!-- DRIVER DETAILS -->
-<div class="bg-gray-100 p-3 rounded space-y-2">
-
-  <p class="text-xs font-bold">👨‍✈️ Driver Information</p>
-
-  <input class="w-full border p-2 rounded text-sm"
-    placeholder="Driver Full Name" />
-
-  <input class="w-full border p-2 rounded text-sm"
-    placeholder="Driver Phone Number (IVR/SMS calls)" />
-
-  <!-- LICENSE SECTION -->
-  <div class="pt-2">
-    <p class="text-[11px] font-semibold text-gray-600">📄 Driving License</p>
-
-    <input class="w-full border p-2 rounded text-sm font-mono"
-      placeholder="License Number (e.g. DL-12345678)" />
-
-    <select class="w-full border p-2 rounded text-sm">
-      <option>License Class</option>
-      <option>C1 - Light Trucks</option>
-      <option>C - Heavy Trucks</option>
-      <option>E - Trailer / Container Trucks</option>
-    </select>
-  </div>
-
-</div>
       <!-- EMPTY CONTAINER -->
       <div class="bg-yellow-50 p-3 rounded space-y-2">
         <p class="text-xs font-bold">📦 Empty Container Return</p>
@@ -112,36 +85,29 @@
         <div id="emptyMsg" class="text-[11px] text-gray-600"></div>
       </div>
 
-      <!-- DRIVER SECTION START -->
-<div class="bg-blue-50 p-3 rounded space-y-2">
+      <!-- DRIVER -->
+      <div class="bg-blue-50 p-3 rounded space-y-2">
 
-  <p class="text-xs font-bold">👨‍✈️ Driver & License Details</p>
+        <p class="text-xs font-bold">👨‍✈️ Driver & License</p>
 
-  <!-- Driver Name -->
-  <input class="w-full border p-2 rounded text-sm"
-    placeholder="Driver Full Name" />
+        <input class="w-full border p-2 rounded text-sm" placeholder="Driver Name"/>
+        <input class="w-full border p-2 rounded text-sm" placeholder="Driver Phone"/>
 
-  <!-- Driver Phone -->
-  <input class="w-full border p-2 rounded text-sm"
-    placeholder="Driver Phone (IVR/SMS)" />
+        <input id="licenseInput"
+          class="w-full border p-2 rounded text-sm font-mono"
+          placeholder="License (e.g. DL-12345678)"/>
 
-  <!-- License Number -->
-  <input id="licenseInput" class="w-full border p-2 rounded text-sm font-mono"
-    placeholder="License Number (e.g. DL-12345678)" />
+        <select class="w-full border p-2 rounded text-sm">
+          <option>License Class</option>
+          <option>C1</option>
+          <option>C</option>
+          <option>E</option>
+        </select>
 
-  <!-- License Class -->
-  <select class="w-full border p-2 rounded text-sm">
-    <option>License Class</option>
-    <option>C1 - Light Trucks</option>
-    <option>C - Heavy Trucks</option>
-    <option>E - Trailer Trucks</option>
-  </select>
+        <div id="licenseStatus" class="text-[11px] text-gray-600"></div>
 
-  <!-- STATUS DISPLAY -->
-  <div id="licenseStatus" class="text-[11px] text-gray-600"></div>
+      </div>
 
-</div>
-<!-- DRIVER SECTION END -->
       <!-- PRICE -->
       <div class="bg-green-50 p-3 rounded text-xs">
         💰 Suggested Price:
@@ -157,7 +123,7 @@
     <!-- ================= OWNER ================= -->
     <div id="ownerView" class="hidden space-y-3">
 
-      <h2 class="font-bold text-sm">Fleet Owner</h2>
+      <h2 class="font-bold text-sm">Fleet Owner Dashboard</h2>
 
       <div class="bg-gray-100 p-3 rounded space-y-2">
         <input class="w-full border p-2 rounded text-sm" placeholder="Owner Name"/>
@@ -182,7 +148,7 @@
 
   <!-- FOOTER -->
   <div class="text-center text-[10px] p-2 text-gray-400 border-t">
-    DCE MVP v1.1 • PANDA Logistics
+    DCE MVP v1.2 • PANDA Logistics
   </div>
 
 </div>
@@ -204,43 +170,35 @@ function switchRole(role){
   }
 }
 
-/* Kariakoo Rule */
+/* ZONE RULE */
 function zoneCheck(val){
   const msg = document.getElementById("zoneMsg");
 
   if(val.includes("Kariakoo")){
-    msg.innerHTML = "⚠ Kariakoo ni NIGHT ONLY (20:00 - 06:00)";
+    msg.innerHTML = "⚠ Kariakoo: NIGHT ONLY (20:00 - 06:00)";
   } else {
-    msg.innerHTML = "✔ Open 24/7 Zone";
+    msg.innerHTML = "✔ 24/7 Available Zone";
   }
 }
 
-/* Empty Container Logic */
+/* EMPTY CONTAINER */
 function emptyCheck(val){
   const msg = document.getElementById("emptyMsg");
 
   if(val === "none"){
     msg.innerHTML = "✔ No extra cost";
-  }
-
-  if(val === "kigamboni"){
-    msg.innerHTML = "⚠ Kigamboni drop → Extra fuel + time cost";
-  }
-
-  if(val === "icd"){
-    msg.innerHTML = "🏭 ICD return → Queue + handling charges";
-  }
-
-  if(val === "normal"){
+  } else if(val === "normal"){
     msg.innerHTML = "📍 Standard depot return";
+  } else if(val === "kigamboni"){
+    msg.innerHTML = "⚠ Kigamboni → Extra fuel + time cost";
+  } else if(val === "icd"){
+    msg.innerHTML = "🏭 ICD return → Queue + handling charges";
   }
 }
 
-</script>
-
-  // DRIVER LICENSE VALIDATION (SOFT CHECK)
-function checkLicenseStatus() {
-  const license = document.getElementById("licenseInput")?.value;
+/* LICENSE VALIDATION */
+function checkLicenseStatus(){
+  const license = document.getElementById("licenseInput").value;
   const status = document.getElementById("licenseStatus");
 
   if(!license){
@@ -248,17 +206,24 @@ function checkLicenseStatus() {
     return;
   }
 
-  // Soft validation (NOT blocking system)
   const pattern = /^[A-Z]{2}-\d{6,10}$/;
 
   if(pattern.test(license)){
-    status.innerHTML = "✔ License format valid (Active Risk: LOW)";
+    status.innerHTML = "✔ Valid License (LOW RISK)";
     status.style.color = "green";
   } else {
-    status.innerHTML = "⚠ License format unusual (Flagged Risk: HIGH)";
+    status.innerHTML = "⚠ Invalid Format (HIGH RISK)";
     status.style.color = "orange";
   }
 }
-  
+
+/* ATTACH EVENT */
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("licenseInput")
+    .addEventListener("keyup", checkLicenseStatus);
+});
+
+</script>
+
 </body>
 </html>
